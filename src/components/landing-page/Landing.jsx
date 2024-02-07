@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from '../NavBar'
-import './landing.css'
+import './landingstyles.css'
 import Email from '../Email'
 import datapage from '../../assets/landingpage/data-page-demo.svg'
 import dotss from '../../assets/dotss.svg'
@@ -60,11 +60,11 @@ const Landing = () => {
 
             <div className='flex flex-col justify-center items-center md:mt-[130px]'>
 
-                <p className='flex justify-center items-center text-center'>
+                <div className='flex justify-center items-center text-center'>
                     <p className='text-black font-semibold mr-2 text-[30px] md:text-[44px]'>Swift your </p>
                     <p className='text-[#0500FF] font-semibold mr-1 text-[30px] md:text-[44px]'>performance</p>
 
-                </p>
+                </div>
                 <p className='text-center w-[65%] mt-5 text-gray-700 text-[12px] md:text-[20px]'>Unlock success with PaperPro: PYQ insights, AI guidance, and hands-on practice in 5 simple steps.</p>
 
                 <div className=' w-full h-full mt-[90px] gap-[400px]'>
