@@ -1,0 +1,12 @@
+/* For mobile devices */
+.bg-blue-mobile {
+    background-color: blue;
+  }
+  
+  /* For tablets and laptops */
+  .bg-image-tablet-laptop {
+    background-image: url(../../assets/landingpage/background-hero.svg);
+    background-repeat: no-repeat;
+background-size: cover;
+}
+  
