@@ -113,10 +113,10 @@ const Pricing = () => {
                 <div className='flex justify-center items-center font-bold text-[30px]  md:text-[50px] '>
                     <p className='text-center mt-[20px] md:mt-[30px]'>Pricing after beta</p>
                 </div>
-                <div className='flex flex-col gap-[14px] md:flex-row justify-center items-end'>
+                <div className='flex flex-col gap-[14px] md:flex-row justify-center items-center'>
 
 
-                    <div className='bg-white w-[400px] h-[400px] md:w-[380px] md:h-[450px] rounded-lg flex justify-start mt-5  p-4 pl-5 flex-col '>
+                    <div className='bg-white w-[400px] h-[400px] sm:w-[80%] md:w-[380px] md:h-[450px] rounded-lg flex justify-start mt-5  p-4 pl-5 flex-col'>
                         <p className='font-semibold text-[24px]'>Pro</p>
                         <p className='font-bold text-[50px] text-[#0F0BC7]'>$5 <span className='text-[16px] text-gray-700 '>/Month</span></p>
                         <hr className='border-black my-5' />

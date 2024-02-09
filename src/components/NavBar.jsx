@@ -19,7 +19,8 @@ export const NavBar = () => {
             <div>
 
                 <Link to="/"> 
-                <img src={logo} alt="" />
+                {/* <img src={logo} alt="" /> */}
+                <p className="text-white font-semibold text-[20px]">PaperBrock.</p>
                 </Link>
                 
             </div>

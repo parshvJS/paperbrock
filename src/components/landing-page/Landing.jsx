@@ -11,7 +11,7 @@ import step2 from '../../assets/landingpage/step2-block.svg'
 import step3 from '../../assets/landingpage/step3-block.svg'
 const Landing = () => {
     return (
-        <>
+        <div className='flex justify-center flex-1 item-center flex-col flex-wrap'>
             <div className='landing h-full  lg:bg-blue-mobile bg-image-tablet-laptop'>
                 <NavBar />
 
@@ -22,7 +22,7 @@ const Landing = () => {
                         </div>
                         <p className='ml-3 font-semibold text-center'>Lifetime Free</p>
                     </div>
-                    <p className='text-white font-bold text-[37px] w-[340px] md:text-[62px] md:w-[1100px] text-center  '>
+                    <p className='text-white font-bold text-[37px] w-[340px] md:text-[62px] md:w-[1100px] text-center'>
                         Empower Your Exam Preparation with PaperPro!
                     </p>
                 </div>
@@ -103,7 +103,7 @@ const Landing = () => {
                 </div>
             </div>
 
-        </>
+        </div>
     )
 }
 
