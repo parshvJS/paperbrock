@@ -1,6 +1,7 @@
 import React from "react";
 import './navbar.css'
 import { Link } from "react-router-dom";
+import logo from "../assets/landingpage/PaperPro.svg"
 export const NavBar = () => {
     const navMenu = [
         {
@@ -18,7 +19,7 @@ export const NavBar = () => {
             <div>
 
                 <Link to="/"> 
-                <img src="src\assets\landingpage\PaperPro.svg" alt="" />
+                <img src={logo} alt="" />
                 </Link>
                 
             </div>
