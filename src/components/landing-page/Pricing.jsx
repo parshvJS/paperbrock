@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import ticked from '../../assets/landingpage/ticked.svg'
 import unticked from '../../assets/landingpage/unticked.svg'
 import tickedw from '../../assets/landingpage/ticked-white.svg'
-
+import logo from '../../assets/landingpage/PaperPro.svg'
 const Pricing = () => {
 
     const tickedMenu1 = [
@@ -93,7 +93,7 @@ const Pricing = () => {
 
                 <div>
                     <Link to="/">
-                        <img src="src\assets\landingpage\PaperPro.svg" className='absolute top-[15px] left-[15px] md:left-[55px] md:top-[30px]' />
+                        <img src={logo} className='absolute top-[15px] left-[15px] md:left-[55px] md:top-[30px]' />
                     </Link>
                 </div>
                 <div className='flex justify-center items-center '>
