@@ -11,13 +11,17 @@ function Email() {
             const options = {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "http://siteA.com",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+                    "Access-Control-Allow-Credentials": true,
                 },
                 body: JSON.stringify({ email: emailAddress })
             };
             console.log(options)
             const user = await fetch('api/v1/beta/register', options);
-            console.log("user is : ",user)
+            console.log("user is : ", user)
         } catch (error) {
             console.error(error);
         } finally {
