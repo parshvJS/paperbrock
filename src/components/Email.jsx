@@ -16,7 +16,7 @@ function Email() {
                 body: JSON.stringify({ email: emailAddress })
             };
             console.log(options)
-            const user = await fetch('https://paperbrock-backend-beta.vercel.app/api/v1/beta/register', options);
+            const user = await fetch('https://paperbrock-backend-beta-vtq7.vercel.app/api/v1/beta/register', options);
             console.log("user is : ", user)
         } catch (error) {
             console.error(error);
