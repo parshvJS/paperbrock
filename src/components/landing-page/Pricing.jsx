@@ -93,7 +93,9 @@ const Pricing = () => {
 
                 <div>
                     <Link to="/">
-                        <img src={logo} className='absolute top-[15px] left-[15px] md:left-[55px] md:top-[30px]' />
+                    <p className="text-white font-semibold text-[24px] absolute top-[15px] left-[15px] md:left-[55px] md:top-[30px]">PaperBrock.</p>
+
+                        {/* <img src={logo} className='absolute top-[15px] left-[15px] md:left-[55px] md:top-[30px]' /> */}
                     </Link>
                 </div>
                 <div className='flex justify-center items-center '>
