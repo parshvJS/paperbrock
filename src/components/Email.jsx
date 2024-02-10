@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
+import createDoc from '../utils/appwrite';
 
 function Email() {
     const [emailAddress, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const handleSubmit = async () => {
-        // Handle form submission
-        try {
-            setLoading(true);
-            const options = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ email: emailAddress })
-            };
-            console.log(options)
-            const user = await fetch('https://paperbrock-backend-beta-vtq7.vercel.app/api/v1/beta/register', options);
-            console.log("user is : ", user)
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-            setEmail("")
-        }
-    };
+    // const handleSubmit = async () => {
+    //     // Handle form submission
+    //     try {
+    //         setLoading(true);
+    //         const options = {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({ email: emailAddress })
+    //         };
+    //         console.log(options)
+    //         const user = await fetch('https://paperbrock-backend-beta-vtq7.vercel.app/api/v1/beta/register', options);
+    //         console.log("user is : ", user)
+    //     } catch (error) {
+    //         console.error(error);
+    //     } finally {
+    //         setLoading(false);
+    //         setEmail("")
+    //     }
+    // };
+
+    const  handleSubmit=async ()=>{
+        await createDoc(emailAddress)
+    }
 
     const handleButtonClick = (e) => {
         e.stopPropagation(); // Prevent event propagation
