@@ -7,7 +7,7 @@ function Email() {
     const [validEmail, setValidEmail] = useState(true); // Track email validity
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent form submission
+        e.preventDefault(); 
         if (emailAddress === "") {
             setValidEmail(false); // Empty email
             return;
@@ -48,7 +48,7 @@ function Email() {
 
     return (
         <>
-            <div className='flex justify-center items-center rounded-full bg-white md:p-2 w-auto sm:w-[70%] md:w-[370px]'>
+            <div className='flex justify-center items-center rounded-full bg-white md:p-2 '>
                 <form onSubmit={handleSubmit} className='flex items-center justify-center'>
                     <div className='mx-2 ml-5 sm:ml-1 sm:mx-3'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
