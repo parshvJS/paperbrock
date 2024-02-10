@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NavBar from '../NavBar'
 import './landingstyles.css'
 import Email from '../Email'
@@ -10,6 +10,7 @@ import step1 from '../../assets/landingpage/step1-block.svg'
 import step2 from '../../assets/landingpage/step2-block.svg'
 import step3 from '../../assets/landingpage/step3-block.svg'
 const Landing = () => {
+ 
     return (
         <div className='flex justify-center flex-1 item-center flex-col flex-wrap'>
             <div className='landing h-full  lg:bg-blue-mobile bg-image-tablet-laptop'>
@@ -23,7 +24,7 @@ const Landing = () => {
                         <p className='ml-3 font-semibold text-center'>Lifetime Free</p>
                     </div>
                     <p className='text-white font-bold text-[37px] w-[340px] md:text-[62px] md:w-[1100px] text-center'>
-                        Empower Your Exam Preparation with PaperPro!
+                        Empower Your Exam Preparation with PaperBrock!
                     </p>
                 </div>
 
@@ -32,7 +33,7 @@ const Landing = () => {
                     </p>
                 </div>
 
-                <div className='flex justify-center items-center mt-10'>
+                <div className='flex justify-center items-center mt-10 w-full'>
                     <Email />
                 </div>
 
@@ -65,7 +66,7 @@ const Landing = () => {
                     <p className='text-[#0500FF] font-semibold mr-1 text-[30px] md:text-[44px]'>performance</p>
 
                 </div>
-                <p className='text-center w-[65%] mt-5 text-gray-700 text-[12px] md:text-[20px]'>Unlock success with PaperPro: PYQ insights, AI guidance, and hands-on practice in 5 simple steps.</p>
+                <p className='text-center w-[65%] mt-5 text-gray-700 text-[12px] md:text-[20px]'>Unlock success with PaperBrock: PYQ insights, AI guidance, and hands-on practice in 5 simple steps.</p>
 
                 <div className=' w-full h-full mt-[90px] gap-[400px]'>
 
@@ -94,13 +95,19 @@ const Landing = () => {
                         <div className='font-light w-full  md:w-[75%] flex justify-center md:justify-end text-[30px] md:text-[64px]'>
                             <p>AI Wisdom Unleashed</p>
                         </div>
-                        <div className='flex items-end md:flex-row flex-col-reverse'>
+                        <div className='flex items-end md:flex-row flex-col-reverse gap-4 md:gap-0'>
                             <img src={step3} alt="paper upload dashboard" />
                             <p className='font-light text-[20px] md:text-[35px] ml-5 md:w-[250px] text-center md:text-left'>Immerse in AI From dynamic doubt-solving to precision reference , it's your go-to for insightful</p>
                         </div>
                     </div>
 
                 </div>
+            </div>
+
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
 
         </div>

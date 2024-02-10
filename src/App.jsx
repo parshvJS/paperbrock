@@ -7,10 +7,12 @@ function App() {
   console.clear()
   return (
 
-    <Routes>
+   <div>
+     <Routes>
       <Route path='/' element={<Landing />} />
       <Route path='/beta-register' element={<Pricing />} />
     </Routes>
+   </div>
 
   );
 }

@@ -100,7 +100,7 @@ const Pricing = () => {
                     <p className='font-bold text-white text-[30px] w-[400px] md:text-[50px] md:w-[800px] text-center mt-[100px] md: '>Register your email and get lifetime access </p>
                 </div>
 
-                <div className='flex justify-center items-center mt-[80px]'>
+                <div className='flex justify-center items-center mt-[80px] w-full'>
                     <Email />
                 </div>
             </div>
