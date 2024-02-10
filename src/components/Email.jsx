@@ -15,7 +15,7 @@ function Email() {
                 },
                 body: JSON.stringify({ email: emailAddress })
             };
-            await fetch('https://paperbrock-backend-beta.vercel.app/api/v1/beta/register', options);
+            await fetch('/api/v1/beta/register', options);
         } catch (error) {
             console.error(error);
         } finally {
