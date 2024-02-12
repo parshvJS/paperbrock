@@ -6,7 +6,7 @@ import Landing from "./components/landing-page/Landing";
 function App() {
   return (
 
-   <div className="w-fit">
+   <div >
      <Routes>
       <Route path='/' element={<Landing />} />
       <Route path='/beta-register' element={<Pricing />} />

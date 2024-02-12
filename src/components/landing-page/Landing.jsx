@@ -12,8 +12,8 @@ import step3 from '../../assets/landingpage/step3-block.svg'
 const Landing = () => {
  
     return (
-        <div className='flex justify-center flex-1 item-center flex-col flex-wrap'>
-            <div className='landing h-full  lg:bg-blue-mobile bg-image-tablet-laptop'>
+        <div className='flex justify-center flex-1 item-center flex-col flex-wrap w-full'>
+            <div className='landing h-full w-full lg:bg-blue-mobile bg-image-tablet-laptop'>
                 <NavBar />
 
                 <div className='hero flex flex-col justify-center items-center'>
