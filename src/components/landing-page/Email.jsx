@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import createDoc from '../utils/appwrite';
+import createDoc from '../../utils/appwrite';
 
 function Email() {
     const [emailAddress, setEmailAddress] = useState("");
