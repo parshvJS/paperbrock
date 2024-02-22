@@ -40,6 +40,43 @@ const SignIn = () => {
     const handleSelectChange = (event) => {
         setSelectedOption(event.target.value);
     };
+    async function handleLogIning(e) {
+        e.preventDefault();
+        setIsloading(true);
+
+        try {
+            const response = await fetch(`${api_url}/api/v1/users/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+            if (!response.ok) {
+                const errorData = await response.json();
+                setError(errorData.error.message)
+                setIsError(true)
+                throw new Error(errorData.error.message);
+            }
+            else {
+                notify()
+                const res = await response.json()
+                console.log(res)
+                localStorage.setItem("AccessToken", res.data.tokens.AccessToken)
+                checkAuthUser()
+                navigate("/dashboard")
+            }
+
+
+        } catch (error) {
+            setError(error.message)
+            console.error("hello");
+        } finally {
+            setIsloading(false);
+            setemail("");
+            setPassword("");
+        }
+    }
 
     async function handleLogIn(e) {
         e.preventDefault();
@@ -70,8 +107,10 @@ const SignIn = () => {
             }
             else {
                 const data = await response.json()
+
                 // calls toast
                 notify()
+                handleLogIning(e)
                 setUser({
                     id: data.data._id,
                     email: data.data.email,

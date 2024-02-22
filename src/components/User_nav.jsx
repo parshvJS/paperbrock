@@ -57,6 +57,12 @@ const User_nav = () => {
                     }
                     )}
                 </div>
+                <div className='flex gap-4 flex-1'>
+                    <div className=''></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
                 <div className='h-screen flex items-center'>
                     <div className=" flex items-center justify-center h-20">
                         <button className={`text-white ${collapsed ? "ml-[75px]" : "ml-[250px]"} focus:outline-none bg-pri-400 w-5 h-5 rounded-full animate-none`} onClick={toggleSidebar}>

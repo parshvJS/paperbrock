@@ -20,7 +20,7 @@ function App() {
       <Route path='/user/log-in' element={<Login />} />
       <Route path='/user/sign-in' element={<SignIn />} />
       <Route element={<Root_layout />} >
-        <Route path="/dashboard" element={<Home_dashboard/>}/>
+        <Route index path="/dashboard" element={<Home_dashboard/>}/>
         <Route path="/ai-book" element={<AiBook/>}/>
         <Route path="/practice-paper" element={<PracticePaper/>}/>
       </Route>

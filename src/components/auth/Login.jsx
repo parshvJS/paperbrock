@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useUserContext } from '../../context/authChecked.jsx'
 
 const Login = () => {
-    const { setUser } = useUserContext();
+    const { setUser,checkAuthUser } = useUserContext();
     let [isLoading, setIsloading] = useState(false)
     const [email, setemail] = useState("")
     const [password, setPassword] = useState("")
@@ -49,8 +49,8 @@ const Login = () => {
             else {
                 notify()
                 const res = await response.json()
-                console.log(res)
                 localStorage.setItem("AccessToken", res.data.tokens.AccessToken)
+                checkAuthUser()
                 navigate("/dashboard")
             }
 
