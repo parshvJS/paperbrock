@@ -41,7 +41,7 @@ export const NavBar = () => {
 
             </div>
             <div>
-                <Link to="/beta-register" className="bg-white px-2.5 py-2 md:px-5 md:py-2 rounded-full hover:bg-blue-600 transition-all hover:text-white  text-black md:font-semibold font-normal ">Start For Free</Link>
+                <Link to="/user/sign-in" className="bg-white px-2.5 py-2 md:px-5 md:py-2 rounded-full hover:bg-blue-600 transition-all hover:text-white  text-black md:font-semibold font-normal ">Start For Free</Link>
             </div>
 
         </div>

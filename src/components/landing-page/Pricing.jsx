@@ -1,6 +1,6 @@
 import React from 'react'
 import roller from '../../assets/roller.svg'
-import Email from '../Email'
+import Email from './Email'
 import { Link } from 'react-router-dom'
 import ticked from '../../assets/landingpage/ticked.svg'
 import unticked from '../../assets/landingpage/unticked.svg'

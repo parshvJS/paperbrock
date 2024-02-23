@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import NavBar from '../NavBar'
 import './landingstyles.css'
-import Email from '../Email'
+import Email from './Email'
 import datapage from '../../assets/landingpage/data-page-demo.svg'
 import dotss from '../../assets/dotss.svg'
 import roller from '../../assets/roller.svg'
