@@ -4,7 +4,7 @@ import Pricing from "./components/landing-page/Pricing";
 import Landing from "./components/landing-page/Landing";
 import Login from "./components/auth/Login";
 import SignIn from "./components/auth/SignIn";
-import Home_dashboard from "./components/dashboard/home_dashboard";
+import Home_dashboard from "./components/dashboard/Home_dashboard";
 import Root_layout from "./components/dashboard/Root_layout";
 import AiBook from "./components/dashboard/AiBook";
 import PracticePaper from "./components/dashboard/PracticePaper";
