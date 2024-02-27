@@ -20,6 +20,9 @@ export default {
           900: '#000933', // Dark blue
         },
       },
+      width: {
+        'calc-100-minus-256': 'calc(100% - 256px)',
+      },
     },
   },
   plugins: [],

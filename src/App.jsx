@@ -8,6 +8,7 @@ import Home_dashboard from "./components/dashboard/Home_dashboard";
 import Root_layout from "./components/dashboard/Root_layout";
 import AiBook from "./components/dashboard/AiBook";
 import PracticePaper from "./components/dashboard/PracticePaper";
+import Analayzer from "./components/Analayzer";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route index path="/dashboard" element={<Home_dashboard/>}/>
         <Route path="/ai-book" element={<AiBook/>}/>
         <Route path="/practice-paper" element={<PracticePaper/>}/>
+        <Route path="/profile/:id" element={<PracticePaper/>}/>
+        <Route path="/analayzer/:id" element={<Analayzer/>}/>
       </Route>
     </Routes>
    </div>

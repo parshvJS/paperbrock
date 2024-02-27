@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import side from '../../assets/auth/login-side-img.svg'
 import emailIcon from '../../assets/auth/env.svg'
 import lock from '../../assets/auth/lock.svg'
@@ -8,6 +8,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useUserContext } from '../../context/authChecked.jsx'
+import DropDown from '../dashboard/DropDown.jsx'
 const SignIn = () => {
     const { setUser, user } = useUserContext()
     const navigate = useNavigate()
@@ -132,8 +133,14 @@ const SignIn = () => {
             setPassword("");
         }
     }
+    const options = [
+        {value: 'Engineering', label: 'Engineering' },
+        {value: 'UPSC', label: 'UPSC' },
+        {value: 'CBSC', label: 'CBSC' },
+        {value: 'ICSE', label: 'ICSE' }
+        ];
 
-    return (
+        return (
         <div className="bg-white flex justify-center items-center h-screen flex-row-reverse">
 
             <div className="w-1/2 h-screen hidden lg:block">
@@ -194,22 +201,10 @@ const SignIn = () => {
                         </div>
                     </div>
 
-                    <div className="mb-4">
-                        <label htmlFor="stream" className="block text-gray-950">Education Stream</label>
-                        <div>
-                            <select
-                                className="w-full mt-1 bg-white border border-gray-300 rounded-b-md bg-none rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-                                value={selectedOption}
-                                onChange={handleSelectChange}
-                            >
-                                <option value="" disabled>Select Your Education Stream</option>
-                                <option value="Engineering">Engineering</option>
-                                <option value="UPSC">UPSC</option>
-                                <option value="CBSC">CBSC</option>
-                                <option value="ICSE">ICSE</option>
-                            </select>
-                        </div>
-                    </div>
+                  
+
+                    <DropDown options={options} onStreamChange={handleSelectChange} widthSize={'full'} />
+
 
 
                     <button type="submit" className="bg-pri-500 hover:bg-pri-600 text-white font-semibold rounded-md py-2 px-4 w-full flex justify-center items-center">

@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react"
 import { getcurrentUser } from "../utils/user"
 import { createContext } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate,useLocation } from "react-router-dom"
 
 export const INITIAL_USER = {
     plan: '',
@@ -27,16 +27,20 @@ export const INITIAL_CONTEXT = {
 const authContext = createContext(INITIAL_CONTEXT)
 
 const AuthProvider = ({ children }) => {
+    const { pathname } = useLocation()
+    console.log(pathname)
     const navigate = useNavigate();
 
     useEffect(() => {
         const cookieFallback = localStorage.getItem("AccessToken");
-
-        if (!cookieFallback) {
-            navigate("/user/log-in");
-        } else {
+        if(pathname == "/" && !cookieFallback){
+            navigate("/")
+        }
+        else if (cookieFallback ) {
             navigate('/dashboard')
             checkAuthUser();
+        } else {
+            navigate("/user/log-in");
         }
     }, []);
 
