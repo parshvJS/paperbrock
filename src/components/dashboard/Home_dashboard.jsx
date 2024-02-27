@@ -19,16 +19,7 @@ const Home_dashboard = () => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
   
-  const notify = () => toast.error("something went wrong,can't provide analayzed data !", {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-});
+
   function handleStreamChange(value) {
     setOnStreamChange(value)
   }
