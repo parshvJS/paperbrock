@@ -15,12 +15,13 @@ import dots from '../assets/dots.svg';
 import { useUserContext } from '../context/authChecked';
 
 const User_nav = () => {
-    const { user } = useUserContext();
+    const { user,toggleSideBar } = useUserContext();
     const [collapsed, setCollapsed] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false); // New state for dropdown
 
     const { pathname } = useLocation();
     const toggleSidebar = () => {
+        toggleSideBar()
         setCollapsed(!collapsed);
     };
 
@@ -58,7 +59,7 @@ const User_nav = () => {
 
     return (
         <>
-            <div className={`bg-gradient-to-t to-pri-800 from-pri-500 text-white h-screen flex flex-col items-center justify-between  z-50 ${collapsed ? 'w-20' : 'w-64'} transition-all duration-300`}>
+            <div className={`fixed bg-gradient-to-t to-pri-800 from-pri-500 text-white h-screen flex flex-col items-center justify-between  z-50 ${collapsed ? 'w-20' : 'w-64'} transition-all duration-200`}>
                 <div className="flex items-center justify-center h-28 w-28 my-5 ">
                     <img src={collapsed ? collapsed_logo : logo} alt="Logo" />
                 </div>
@@ -68,7 +69,7 @@ const User_nav = () => {
                         let isActive = pathname === menu.route;
                         return (
                             <NavLink to={menu.route} key={menu.label}>
-                                <div key={menu.label} className={`p-4 flex justify-start items-center gap-2 w-[170px] h-[40px] rounded-[6px] ${isActive ? " bg-white" : ""} ${collapsed ? "rounded-full w-[50px] h-[50px]" : ""} ${isActive && collapsed ? "rounded-full w-[50px]" : ""} `}>
+                                <div key={menu.label} className={` hover: p-4 flex justify-start items-center gap-2 w-[170px] h-[40px] rounded-[6px] ${isActive ? " bg-white" : ""} ${collapsed ? "rounded-full w-[50px] h-[50px]" : ""} ${isActive && collapsed ? "rounded-full w-[50px]" : ""} `}>
                                     <img src={isActive ? menu.opb : menu.opw} className={` ${collapsed ? "w-7 h-7" : "w-6 h-6"}`} alt={`${menu.label}`} />
                                     <p className={`${collapsed ? "hidden" : "block"} ${isActive ? "text-black bg-white rounded-[4px]" : "text-white"} font-semibold text-[14px]`} >{`${menu.label}`}</p>
                                 </div>
@@ -94,7 +95,7 @@ const User_nav = () => {
                 </div>
                 <div className={` ${collapsed ? "hidden" : "block"} my-5 rounded-full h-[30px] flex w-36 justify-between items-center z-20`}>
                     <div className=''><img src={profile} className='w-[30px] h-[30px]' /></div>
-                    <div className={`font-medium text-[14px] w-fit block`}>{user.fullName}</div>
+                    <div className={`font-medium text-[14px] w-fit block`}>{user.fullName.split(' ')[0]}</div>
                     <div className={` bg-pri-400 rounded-full w-5 h-5 flex justify-center items-center`} onClick={toggleDropdown}> {/* Attach event handler to toggle dropdown */}
                         <img src={dots} className='w-3 h-3' />
                     </div>

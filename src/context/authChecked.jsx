@@ -21,14 +21,14 @@ export const INITIAL_CONTEXT = {
     isLoading: false,
     setIsLoading: false,
     checkAuthUser: async () => false,
-
+    collapsedCon:false,
+    setCollapsedCon:()=>{},
 }
 
 const authContext = createContext(INITIAL_CONTEXT)
 
 const AuthProvider = ({ children }) => {
     const { pathname } = useLocation()
-    console.log(pathname)
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -47,7 +47,10 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(INITIAL_USER);
     const [isContextAuthenticated, setIsContextAuthenticated] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
+    const [collapsedCon,setCollapsedCon] = useState(true)
+    const toggleSideBar = ()=>{
+        setCollapsedCon(!collapsedCon)
+    }
     const checkAuthUser = async () => {
         try {
             const currentUser = await getcurrentUser();
@@ -75,9 +78,13 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         isLoading,
+        setIsLoading,
         isContextAuthenticated,
         setIsContextAuthenticated,
-        checkAuthUser
+        checkAuthUser,
+        collapsedCon,
+        setIsContextAuthenticated,
+        toggleSideBar
     };
 
     return (

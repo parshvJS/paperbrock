@@ -8,6 +8,7 @@ import DropDown from './DropDown';
 import { api_url, course, options } from '../../constants';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import { getPyqData } from '../../utils/apiCall';
 
 const Home_dashboard = () => {
   const { user } = useUserContext();
@@ -18,7 +19,7 @@ const Home_dashboard = () => {
   const [files, setFiles] = useState([]);
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
-  
+
 
   function handleStreamChange(value) {
     setOnStreamChange(value)
@@ -31,37 +32,34 @@ const Home_dashboard = () => {
     e.preventDefault();
     setIsLoading(true)
     try {
-      const formData = new FormData();
-      formData.append("stream", onStreamChange);
-      formData.append("course", onCourseChange);
-      formData.append("name", examName);
-      formData.append("help", help);
-      files.forEach(file => {
-        formData.append("pyq", file);
-      });
+      // const formData = new FormData();
+      // formData.append("stream", onStreamChange);
+      // formData.append("course", onCourseChange);
+      // formData.append("name", examName);
+      // formData.append("help", help);
+      // files.forEach(file => {
+      //   formData.append("pyq", file);
+      // });
 
-      const response = await fetch(`http://localhost:8000/api/v1/pyq/pyq`, {
-        method: "POST",
-        body: formData,
-      });
-      const resp = await response.json()
-      console.log(resp);
-      if (resp.success == false ) {
-        const notify = () => toast.error(resp.error.message, {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-      });
-        console.log("here");
-        notify()
-        throw new Error("Failed to upload files");
-      }
-      navigate(`/analayzer/${resp.data.id}`)
+      // const resp =await getPyqData(formData)
+
+      // console.log(resp);
+      // if (resp.success == false ) {
+      //   const notify = () => toast.error(resp.error.message, {
+      //     position: "top-center",
+      //     autoClose: 5000,
+      //     hideProgressBar: false,
+      //     closeOnClick: true,
+      //     pauseOnHover: true,
+      //     draggable: true,
+      //     progress: undefined,
+      //     theme: "light",
+      // });
+      //   notify()
+      //   throw new Error("Failed to upload files");
+      // }
+      // navigate(`/analayzer/${resp.data.id}`)
+      navigate('/analayzer/65df6f68e4ce716fe4a8876e')
 
     } catch (error) {
       console.error("Error uploading files:", error);
@@ -69,7 +67,7 @@ const Home_dashboard = () => {
       setIsLoading(false)
     }
   }
-
+           
 
 
 
@@ -159,7 +157,7 @@ const Home_dashboard = () => {
       </div>
 
       <div className='w-full flex'>
-        <button onClick={handleAnalayzer} class="w-full md:w-[100px] h-[50px] bg-gradient-to-r from-black via-pri-500 to-pri-400 hover:to-pri-300 hover:from-gray-900 hover:via-pri-400 transition-all duration-300 rounded-md text-white font-semibold flex justify-center items-center">
+        <button onClick={handleAnalayzer} className="w-full md:w-[100px] h-[50px] bg-gradient-to-r from-black via-pri-500 to-pri-400 hover:to-pri-300 hover:from-gray-900 hover:via-pri-400 transition-all duration-300 rounded-md text-white font-semibold flex justify-center items-center">
           {
             isLoading ?
               <div role="status">

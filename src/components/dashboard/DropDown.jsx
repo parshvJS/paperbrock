@@ -7,11 +7,9 @@ const DropDown = ({ onStreamChange, widthSize, options }) => {
     const selectedValue = event.target.value;
     setSelectedOption(selectedValue);
     onStreamChange(selectedValue);
+    console.log('steam is ',selectedOption);
   };
-  useEffect(()=>{
-    console.log(options);
 
-  },[])
 
   return (
     <div className={`mb-4 w-${widthSize}`}>
@@ -22,7 +20,7 @@ const DropDown = ({ onStreamChange, widthSize, options }) => {
           value={selectedOption}
           onChange={handleSelectChange}
         >
-          <option value="" disabled>Select Your Education Stream</option>
+          <option disabled>Select Your Education Stream</option>
           {options.map((option, index) => (
             <option key={index} value={option.value}>{option.label}</option>
           ))}

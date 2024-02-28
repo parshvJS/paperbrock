@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import side from '../../assets/auth/login-side-img.svg'
 import emailIcon from '../../assets/auth/env.svg'
 import lock from '../../assets/auth/lock.svg'
-import user from '../../assets/auth/user.svg'
-import { api_url, headers } from '../../constants.js'
+import user1 from '../../assets/auth/user.svg'
+import bgImage from '../../assets/title-sign.svg'
+import { api_url, headers, options } from '../../constants.js'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -39,7 +39,8 @@ const SignIn = () => {
     });
 
     const handleSelectChange = (event) => {
-        setSelectedOption(event.target.value);
+        console.log(event , "is insize");
+        setSelectedOption(event);
     };
     async function handleLogIning(e) {
         e.preventDefault();
@@ -97,8 +98,9 @@ const SignIn = () => {
                     email: email,
                     password: password,
                     stream: selectedOption,
-                    fullName: fullName ? fullName : ""
+                    fullName: fullName ? fullName.toUpperCase() : ""
                 }),
+                
             });
             if (!response.ok) {
                 const errorData = await response.json();
@@ -133,18 +135,12 @@ const SignIn = () => {
             setPassword("");
         }
     }
-    const options = [
-        {value: 'Engineering', label: 'Engineering' },
-        {value: 'UPSC', label: 'UPSC' },
-        {value: 'CBSC', label: 'CBSC' },
-        {value: 'ICSE', label: 'ICSE' }
-        ];
 
         return (
         <div className="bg-white flex justify-center items-center h-screen flex-row-reverse">
 
             <div className="w-1/2 h-screen hidden lg:block">
-                <img src={side} alt="Placeholder Image" className="object-cover w-full h-full" />
+                <img src={bgImage} alt="Placeholder Image" className="object-cover w-full h-full" />
             </div>
             <div className="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
                 <div>
@@ -188,7 +184,7 @@ const SignIn = () => {
                     <div className="mb-4">
                         <label htmlFor="fullName" className="block text-gray-950">Full name</label>
                         <div className='border border-gray-300 flex rounded-md'>
-                            <img src={user} alt="email icon" className='w-[20px] mx-[10px]' />
+                            <img src={user1} alt="email icon" className='w-[20px] mx-[10px]' />
                             <input type="text" onChange={(e) => setFullName(e.target.value)} id="fullName" name="fullName" className=" bg-nonew-full rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 w-full" autoComplete="off" />
                         </div>
                     </div>
