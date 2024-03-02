@@ -39,7 +39,7 @@ const User_nav = () => {
             const headers = {
                 "Authorization": `Bearer ${accessToken}`,
             };
-            const res = await fetch(`http://localhost:8000/api/v1/users/logout`,{
+            const res = await fetch(`https://paperbrockbackend.onrender.com/api/v1/users/logout`,{
             headers:headers,
             method:'POST'
             });

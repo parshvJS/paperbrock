@@ -4,39 +4,39 @@ import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/authChecked";
 // const {setIsLoading} = useUserContext()
 // used in Home_dashboard.jsx
-export const getPyqData =async (formData) => {
+export const getPyqData = async (formData) => {
   const accessToken = localStorage.getItem("AccessToken");
 
   const headers = {
-      "Authorization": `Bearer ${accessToken}`,
+    "Authorization": `Bearer ${accessToken}`,
   };
-  
+
   // Make fetch request with headers
-  const response = await fetch(`http://localhost:8000/api/v1/pyq/pyq`, {
-      method: "POST",
-      headers: headers,
-      body: formData,
+  const response = await fetch(`https://paperbrockbackend.onrender.com/api/v1/pyq/pyq`, {
+    method: "POST",
+    headers: headers,
+    body: formData,
   });
-    const resp = await response.json()
-    if(resp.success == false){
-      return resp
-    }
-    console.log(resp.data.resp);
-    // console.log(parsedJsonData)
-    const dataToStore = {
-      name:resp.data.name,
-      stream : resp.data.stream,
-      resp: resp.data.resp
-    }
-    localStorage.setItem(resp.data.id,JSON.stringify(dataToStore))
-    console.log(resp,dataToStore,"is stored")
-    return resp;
+  const resp = await response.json()
+  if (resp.success == false) {
+    return resp
+  }
+  console.log(resp.data.resp);
+  // console.log(parsedJsonData)
+  const dataToStore = {
+    name: resp.data.name,
+    stream: resp.data.stream,
+    resp: resp.data.resp
+  }
+  localStorage.setItem(resp.data.id, JSON.stringify(dataToStore))
+  console.log(resp, dataToStore, "is stored")
+  return resp;
 }
 
 // get data from paramns 
 
-export const getParamsData = async (id) =>{
-    await fetch(`http://localhost:8000/api/v1/pyq/getParamsData`, {
+export const getParamsData = async (id) => {
+  await fetch(`https://paperbrockbackend.onrender.com/api/v1/pyq/getParamsData`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
@@ -48,10 +48,10 @@ export const getParamsData = async (id) =>{
 
 }
 
-export const getUsageArray = async ()=>{
-  const arr = await fetch("http://localhost:8000/api/v1/pyq/getUsage",{
-    headers:{
-      "Authorization" : `Bearer ${localStorage.getItem("AccessToken")}`
+export const getUsageArray = async () => {
+  const arr = await fetch("https://paperbrockbackend.onrender.com/api/v1/pyq/getUsage", {
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem("AccessToken")}`
     }
   });
   const array = await arr.json();
