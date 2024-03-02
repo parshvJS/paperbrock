@@ -6,9 +6,9 @@ import { useUserContext } from '../context/authChecked';
 import { quotes } from '../constants';
 import Popup from './Popup';
 import target from '../assets/targer.svg'
+import QuoteFamiliy from './QuoteFamiliy';
 const Analayzer = () => {
   const { id } = useParams();
-  const { user } = useUserContext()
   const [impKey, setImpKey] = useState([]);
   const [impQ, setImpQ] = useState([]);
   const [highFreqQ, setHighFreqQ] = useState([]);
@@ -57,9 +57,7 @@ const Analayzer = () => {
 
   return (
     <div className='w-full bg-gray-200'>
-      <div className={`bg-cover bg-center w-full h-32 flex justify-center items-center`} style={{ backgroundImage: `url(${bg_title})` }}>
-        <p className=' text-[16px] md:text-[26px] text-white font-semibold text-center'>{`${user.fullName ? user.fullName.split(' ')[0] + "," : ""}  ${randomQuote}`}</p>
-      </div>
+      <QuoteFamiliy/>
 
       <div className='m-4 flex gap-1'>
         <p className='text-pri-500 font-semibold'>{`Report : `}</p>
@@ -196,7 +194,7 @@ const Analayzer = () => {
             {
               lowFreqQ.length ? <div className="mt-auto flex justify-center items-center">
                 <button onClick={() => {
-                  setHeading("High Frequency topics")
+                  setHeading("Low Frequency topics")
                   setItemPass(lowFreqQ)
                   handleMorePointsClick()
                 }} className="bg-pri-500 hover:bg-pri-400 transition-all  text-white px-4 py-2 rounded-full">More {lowFreqQ.length > 8 ? lowFreqQ.length - 8 : ''} Point</button>

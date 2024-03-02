@@ -12,8 +12,8 @@ import { getPyqData } from '../../utils/apiCall';
 
 const Home_dashboard = () => {
   const { user } = useUserContext();
-  const [onStreamChange, setOnStreamChange] = useState("")
-  const [onCourseChange, setOnCourseChange] = useState("")
+  const [onStreamChange, setOnStreamChange] = useState(course[0]?.value || "")
+  const [onCourseChange, setOnCourseChange] = useState(options[0]?.value || "")
   const [examName, setExamName] = useState("")
   const [help, setHelp] = useState("")
   const [files, setFiles] = useState([]);
@@ -32,34 +32,34 @@ const Home_dashboard = () => {
     e.preventDefault();
     setIsLoading(true)
     try {
-      // const formData = new FormData();
-      // formData.append("stream", onStreamChange);
-      // formData.append("course", onCourseChange);
-      // formData.append("name", examName);
-      // formData.append("help", help);
-      // files.forEach(file => {
-      //   formData.append("pyq", file);
-      // });
+      const formData = new FormData();
+      formData.append("stream", onStreamChange);
+      formData.append("course", onCourseChange);
+      formData.append("name", examName);
+      formData.append("help", help);
+      files.forEach(file => {
+        formData.append("pyq", file);
+      });
 
-      // const resp =await getPyqData(formData)
+      const resp =await getPyqData(formData)
 
-      // console.log(resp);
-      // if (resp.success == false ) {
-      //   const notify = () => toast.error(resp.error.message, {
-      //     position: "top-center",
-      //     autoClose: 5000,
-      //     hideProgressBar: false,
-      //     closeOnClick: true,
-      //     pauseOnHover: true,
-      //     draggable: true,
-      //     progress: undefined,
-      //     theme: "light",
-      // });
-      //   notify()
-      //   throw new Error("Failed to upload files");
-      // }
-      // navigate(`/analayzer/${resp.data.id}`)
-      navigate('/analayzer/65df6f68e4ce716fe4a8876e')
+      console.log(resp);
+      if (resp.success == false ) {
+        const notify = () => toast.error(resp.error.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+      });
+        notify()
+        throw new Error("Failed to upload files");
+      }
+      navigate(`/analayzer/${resp.data.id}`)
+      // navigate('/analayzer/65df6f68e4ce716fe4a8876e')
 
     } catch (error) {
       console.error("Error uploading files:", error);

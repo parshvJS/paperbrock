@@ -10,7 +10,8 @@ export const INITIAL_USER = {
     email: '',
     password: '',
     fullName: '',
-    stream: ''
+    stream: '',
+    usage:[]
 }
 
 export const INITIAL_CONTEXT = {
@@ -23,21 +24,21 @@ export const INITIAL_CONTEXT = {
     checkAuthUser: async () => false,
     collapsedCon:false,
     setCollapsedCon:()=>{},
+    
 }
 
 const authContext = createContext(INITIAL_CONTEXT)
 
 const AuthProvider = ({ children }) => {
-    const { pathname } = useLocation()
+    const { pathname } = useLocation();
     const navigate = useNavigate();
 
     useEffect(() => {
         const cookieFallback = localStorage.getItem("AccessToken");
-        if(pathname == "/" && !cookieFallback){
-            navigate("/")
-        }
-        else if (cookieFallback ) {
-            navigate('/dashboard')
+        if (pathname === "/" && !cookieFallback) {
+            navigate("/");
+        } else if (cookieFallback) {
+            navigate('/dashboard');
             checkAuthUser();
         } else {
             navigate("/user/log-in");
@@ -45,32 +46,30 @@ const AuthProvider = ({ children }) => {
     }, []);
 
     const [user, setUser] = useState(INITIAL_USER);
-    const [isContextAuthenticated, setIsContextAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [collapsedCon,setCollapsedCon] = useState(true)
-    const toggleSideBar = ()=>{
-        setCollapsedCon(!collapsedCon)
-    }
+    const [collapsedCon, setCollapsedCon] = useState(true);
+
+    const toggleSideBar = () => {
+        setCollapsedCon(!collapsedCon);
+    };
+
     const checkAuthUser = async () => {
         try {
             const currentUser = await getcurrentUser();
 
             if (!currentUser) {
-                setIsContextAuthenticated(false);
-                return;
+                setIsAuthenticated(false);
             } else {
-                setUser(prevUser => ({
-                    ...prevUser,
-                    id: currentUser._id,
-                    email: currentUser.email,
-                    fullName: currentUser.fullName,
-                    stream: currentUser.stream
-                }));
-                setIsContextAuthenticated(true);
+                setUser({
+                    ...currentUser,
+                    usage: currentUser.usage_history // Assuming `usage` should be initialized with `usage_history`
+                });
+                setIsAuthenticated(true);
             }
         } catch (error) {
             console.error("Error checking auth user:", error.message);
-            setIsContextAuthenticated(false);
+            setIsAuthenticated(false);
         }
     };
 
@@ -79,11 +78,9 @@ const AuthProvider = ({ children }) => {
         setUser,
         isLoading,
         setIsLoading,
-        isContextAuthenticated,
-        setIsContextAuthenticated,
+        isAuthenticated,
         checkAuthUser,
         collapsedCon,
-        setIsContextAuthenticated,
         toggleSideBar
     };
 

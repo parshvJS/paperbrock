@@ -9,6 +9,7 @@ import Root_layout from "./components/dashboard/Root_layout";
 import AiBook from "./components/dashboard/AiBook";
 import PracticePaper from "./components/dashboard/PracticePaper";
 import Analayzer from "./components/Analayzer";
+import AiUsage from "./components/AiUsage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/practice-paper" element={<PracticePaper/>}/>
         <Route path="/profile/:id" element={<PracticePaper/>}/>
         <Route path="/analayzer/:id" element={<Analayzer/>}/>
+        <Route path="/aiBook/:id" element={<AiUsage/>}/>
       </Route>
     </Routes>
    </div>

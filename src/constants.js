@@ -67,3 +67,25 @@ export const quotes = [
   "I attribute my success to this: I never gave or took any excuse. - Florence Nightingale",
   "The only way to do great work is to love what you do. - Steve Jobs",
 ];
+
+
+export const formatTimestamp = (timestamp) => {
+  const date = new Date(timestamp);
+  const now = new Date();
+  const diff = Math.floor((now - date) / 1000);
+
+  const seconds = diff % 60;
+  const minutes = Math.floor(diff / 60) % 60;
+  const hours = Math.floor(diff / 3600) % 24;
+  const days = Math.floor(diff / 86400);
+
+  if (days > 0) {
+    return `${days} day${days > 1 ? 's' : ''} ago`;
+  } else if (hours > 0) {
+    return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+  } else if (minutes > 0) {
+    return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+  } else {
+    return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
+  }
+};

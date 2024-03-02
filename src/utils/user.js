@@ -21,7 +21,7 @@ import { api_url } from "../constants";
 
         // If user data is not found, return null
         if (!userData) return null;
-
+        console.log(userData.data.user)
         // Return the user data
         return userData.data.user;
     } catch (error) {

@@ -3,7 +3,7 @@ import collapsed_logo from '../assets/nav/collapsed_logo.svg';
 import logo from '../assets/nav/logo.svg';
 import LArr from '../assets/nav/right-arr.svg';
 import RArr from '../assets/nav/left-arr.svg';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import op1b from '../assets/nav/options/op1-black.svg';
 import op2b from '../assets/nav/options/op2-black.svg';
 import op3b from '../assets/nav/options/op3-black.svg';
@@ -13,11 +13,13 @@ import op3w from '../assets/nav/options/op3-white.svg';
 import profile from '../assets/profile/pic1.svg';
 import dots from '../assets/dots.svg';
 import { useUserContext } from '../context/authChecked';
+import Loading from './Loading';
 
 const User_nav = () => {
-    const { user,toggleSideBar } = useUserContext();
+    const { user, toggleSideBar, isLoading, setIsLoading } = useUserContext();
     const [collapsed, setCollapsed] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false); // New state for dropdown
+    const navigate = useNavigate()
 
     const { pathname } = useLocation();
     const toggleSidebar = () => {
@@ -28,6 +30,34 @@ const User_nav = () => {
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
+
+    const handleLogout = async (e) => {
+        setIsLoading(true)
+        try {
+            const accessToken = localStorage.getItem("AccessToken");
+
+            const headers = {
+                "Authorization": `Bearer ${accessToken}`,
+            };
+            const res = await fetch(`http://localhost:8000/api/v1/users/logout`,{
+            headers:headers,
+            method:'POST'
+            });
+            const response =await res.json();
+            console.log(response,"ldfsd");
+            localStorage.removeItem('AccessToken');
+            if (response.success == true) {
+                navigate('user/log-in');
+            }
+
+        } catch (error) {
+            throw new Error;
+        }
+        finally {
+            setIsLoading(false);
+        }
+
+    }
 
     const userMenu = [
         {
@@ -83,7 +113,9 @@ const User_nav = () => {
                         <div className="py-1" role="none">
                             {/* Dropdown items */}
 
-                            <a href="#" className="  text-white block px-4 py-2 text-sm  hover:bg-gray-200" role="menuitem" tabIndex="-1">Option 1</a>
+                            <button onClick={handleLogout} className={`hover:text-black text-white block px-4 py-2 text-sm  hover:bg-gray-200`} role="menuitem" tabIndex="-1">{
+                                isLoading ? <Loading /> : "Log Out"
+                            }</button>
                             <a href="#" className="text-white   block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabIndex="-1">Option 2</a>
                             <a href="#" className="text-white   block px-4 py-2 text-sm hover:bg-gray-200" role="menuitem" tabIndex="-1">Option 3</a>
                         </div>

@@ -40,15 +40,26 @@ const Login = () => {
                 },
                 body: JSON.stringify({ email, password }),
             });
-            if (!response.ok) {
+            if (response.success == false) {
                 const errorData = await response.json();
                 setError(errorData.error.message)
+                const notify = () => toast.success(errorData.error.message, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 setIsError(true)
                 throw new Error(errorData.error.message);
             }
             else {
                 notify()
                 const res = await response.json()
+                console.log(res,"is logged in user");
                 localStorage.setItem("AccessToken", res.data.tokens.AccessToken)
                 checkAuthUser()
                 navigate("/dashboard")
