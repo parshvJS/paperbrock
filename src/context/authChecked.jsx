@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
         if (pathname === "/" && !cookieFallback) {
             navigate("/");
         } else if (cookieFallback) {
-            navigate('/dashboard');
+            navigate('/home');
             checkAuthUser();
         } else {
             navigate("/user/log-in");
@@ -57,7 +57,9 @@ const AuthProvider = ({ children }) => {
     const checkAuthUser = async () => {
         try {
             const currentUser = await getcurrentUser();
-
+            if (currentUser?.statuscode === 504 ) {
+                navigate("/user/log-in")
+              }
             if (!currentUser) {
                 setIsAuthenticated(false);
             } else {

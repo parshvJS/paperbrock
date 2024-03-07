@@ -1,4 +1,4 @@
-export const api_url = "https://paperbrockbackend.onrender.com"
+export const api_url = "http://localhost:8000"
 export const headers = 
 {
   "Content-Type" : "application/json"
@@ -9,7 +9,12 @@ export   const options = [
   { value: 'CBSC', label: 'CBSC' },
   { value: 'ICSE', label: 'ICSE' }
 ];
-
+export const homeOptions = [
+  {label : "PYQ " ,labelB:"Analayzer", desc : "Analyze Your Question Paper",route:"/dashboard"},
+  {label : "Answer" ,labelB:"Book", desc : "Get Answers Of Question Paper",route:"/ai-book"},
+  {label : "Practice " ,labelB:"Paper", desc : "Get Personalized Practices Paper",route:"/practice-paper"},
+  {label : "Solved " ,labelB:"Hub", desc : "Access Hand-written Answers",route:"/solved-hub"}
+]
 export  const course = [
   { value: 'B.Tech', label: 'B.Tech' },
   { value: 'GTU', label: 'GTU' },

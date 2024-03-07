@@ -8,5 +8,6 @@ export default defineConfig({
     '/api/v1/beta/register':'https://paperbrock-backend-beta.vercel.app/'
     }
   },
+  
   plugins: [react()],
 })

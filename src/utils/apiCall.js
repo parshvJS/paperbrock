@@ -12,15 +12,13 @@ export const getPyqData = async (formData) => {
   };
 
   // Make fetch request with headers
-  const response = await fetch(`https://paperbrockbackend.onrender.com/api/v1/pyq/pyq`, {
+  const response = await fetch(`http://localhost:8000/api/v1/pyq/pyq`, {
     method: "POST",
     headers: headers,
     body: formData,
   });
   const resp = await response.json()
-  if (resp.success == false) {
-    return resp
-  }
+  
   console.log(resp.data.resp);
   // console.log(parsedJsonData)
   const dataToStore = {
@@ -36,7 +34,7 @@ export const getPyqData = async (formData) => {
 // get data from paramns 
 
 export const getParamsData = async (id) => {
-  await fetch(`https://paperbrockbackend.onrender.com/api/v1/pyq/getParamsData`, {
+  await fetch(`http://localhost:8000/api/v1/pyq/getParamsData`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
@@ -49,12 +47,15 @@ export const getParamsData = async (id) => {
 }
 
 export const getUsageArray = async () => {
-  const arr = await fetch("https://paperbrockbackend.onrender.com/api/v1/pyq/getUsage", {
+  const arr = await fetch("http://localhost:8000/api/v1/pyq/getUsage", {
     headers: {
       "Authorization": `Bearer ${localStorage.getItem("AccessToken")}`
     }
   });
   const array = await arr.json();
+  if(array.message == "log-in"){
+    return array
+  }
   // console.log("returning : " ,array.data.usage)
   return array.data.usage;
 }

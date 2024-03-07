@@ -10,6 +10,8 @@ import op3b from '../assets/nav/options/op3-black.svg';
 import op1w from '../assets/nav/options/op1-white.svg';
 import op2w from '../assets/nav/options/op2-white.svg';
 import op3w from '../assets/nav/options/op3-white.svg';
+import op4w from '../assets/nav/options/op4-white.svg';
+import op4b from '../assets/nav/options/op4-black.svg';
 import profile from '../assets/profile/pic1.svg';
 import dots from '../assets/dots.svg';
 import { useUserContext } from '../context/authChecked';
@@ -39,12 +41,11 @@ const User_nav = () => {
             const headers = {
                 "Authorization": `Bearer ${accessToken}`,
             };
-            const res = await fetch(`https://paperbrockbackend.onrender.com/api/v1/users/logout`,{
-            headers:headers,
-            method:'POST'
+            const res = await fetch(`http://localhost:8000/api/v1/users/logout`, {
+                headers: headers,
+                method: 'POST'
             });
-            const response =await res.json();
-            console.log(response,"ldfsd");
+            const response = await res.json();
             localStorage.removeItem('AccessToken');
             if (response.success == true) {
                 navigate('user/log-in');
@@ -68,6 +69,12 @@ const User_nav = () => {
 
     const navMenu = [
         {
+            label: "Home",
+            opb: op4b,
+            opw: op4w,
+            route: "/home"
+        },
+        {
             label: "PYQ Analyzer",
             opb: op1b,
             opw: op1w,
@@ -89,7 +96,7 @@ const User_nav = () => {
 
     return (
         <>
-            <div className={`fixed bg-gradient-to-t to-pri-800 from-pri-500 text-white h-screen flex flex-col items-center justify-between  z-50 ${collapsed ? 'w-20' : 'w-64'} transition-all duration-200`}>
+            <div className={`fixed bg-gradient-to-t to-pri-800 from-pri-500 text-white h-screen flex mr-3 flex-col items-center justify-between  z-50 ${collapsed ? 'w-20' : 'w-56'} transition-all duration-200`}>
                 <div className="flex items-center justify-center h-28 w-28 my-5 ">
                     <img src={collapsed ? collapsed_logo : logo} alt="Logo" />
                 </div>
@@ -99,8 +106,8 @@ const User_nav = () => {
                         let isActive = pathname === menu.route;
                         return (
                             <NavLink to={menu.route} key={menu.label}>
-                                <div key={menu.label} className={` hover: p-4 flex justify-start items-center gap-2 w-[170px] h-[40px] rounded-[6px] ${isActive ? " bg-white" : ""} ${collapsed ? "rounded-full w-[50px] h-[50px]" : ""} ${isActive && collapsed ? "rounded-full w-[50px]" : ""} `}>
-                                    <img src={isActive ? menu.opb : menu.opw} className={` ${collapsed ? "w-7 h-7" : "w-6 h-6"}`} alt={`${menu.label}`} />
+                                <div key={menu.label} className={` p-4 flex justify-start items-center gap-2 w-[170px] h-[40px] rounded-[6px] ${isActive ? " bg-white" : ""} ${collapsed ? "rounded-full w-[50px] h-[50px]" : ""} ${isActive && collapsed ? "rounded-full w-[50px]" : ""} `}>
+                                    <img src={isActive ? menu.opb : menu.opw} className={` ${collapsed ? "w-7 h-7" : "w-5 w-5"}`} alt={`${menu.label}`} />
                                     <p className={`${collapsed ? "hidden" : "block"} ${isActive ? "text-black bg-white rounded-[4px]" : "text-white"} font-semibold text-[14px]`} >{`${menu.label}`}</p>
                                 </div>
                             </NavLink>
@@ -134,7 +141,7 @@ const User_nav = () => {
                 </div>
                 <div className=' flex items-center justify-center'>
                     <div className=" flex items-center justify-center h-20">
-                        <button className={`text-white flex justify-center items-center ${collapsed ? "ml-[75px]" : "ml-[250px]"} focus:outline-none bg-pri-400 w-5 h-5 rounded-full animate-none`} onClick={toggleSidebar}>
+                        <button className={`text-white flex justify-center items-center ${collapsed ? "ml-[75px]" : "ml-[220px]"} focus:outline-none bg-pri-400 w-5 h-5 rounded-full animate-none`} onClick={toggleSidebar}>
                             <div className='flex justify-between items-center'>
                                 <img src={collapsed ? RArr : LArr} alt="" />
                             </div>

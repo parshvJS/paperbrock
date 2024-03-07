@@ -3,6 +3,7 @@ import { useUserContext } from '../../context/authChecked';
 import { getUsageArray } from '../../utils/apiCall';
 import { formatTimestamp } from '../../constants';
 import { useNavigate } from 'react-router-dom';
+import LoadingPrompt from '../LoadingPrompt';
 
 const AiBook = () => {
   const { user, setUser } = useUserContext();
@@ -13,7 +14,15 @@ const AiBook = () => {
   const navigate = useNavigate()
   useEffect(() => {
     const fetchData = async () => {
+
       const Usage = await getUsageArray();
+      console.log(Usage, "logg")
+      if (Usage.statuscode === 504) {
+        console.log("sdalogg")
+
+        navigate('/user/log-in');
+      }
+      console.log(Usage)
       setUser((prevUser) => ({
         ...prevUser,
         usage: Usage,
@@ -25,7 +34,7 @@ const AiBook = () => {
         setIsContentInLocal(true);
       }
       setIsLoading(false);
-    };https://paperbrockbackend.onrender.com
+    };
 
     fetchData();
   }, [setUser]); // Add setUser to dependency array
@@ -38,7 +47,10 @@ const AiBook = () => {
   return (
     <div className='m-8 w-full'>
       {isLoading ? (
-        <p>Loading...</p>
+        <div className='w-full h-[540px] flex justify-center items-center'>
+          <LoadingPrompt />
+
+        </div>
       ) : isContentInLocal ? (
         <div>
           <div>
@@ -50,21 +62,23 @@ const AiBook = () => {
               const createdAt = new Date(parsedItem.createdAt); // Convert createdAt to Date object
               console.log(parsedItem.id);
               return (
-                <button
-                  onClick={() => handleClick(parsedItem.id, index)}
-                  className={` border border-black rounded-md bg-white shadow-lg p-3 w-full flex items-center justify-between`} key={parsedItem.id}>
-                  <div>
-                    <p className='text-left w-fit font-semibold text-[18px]'>{parsedItem.name}</p>
-                    <p className='text-left'>{formatTimestamp(createdAt)}</p> {/* Pass createdAt as Date object */}
-                  </div>
-                  <span
-                    className='rounded-full block w-8 h-8 mt-2'
+                <div className="border border-black rounded-md"
+                >
+                  <button
+                    onClick={() => handleClick(parsedItem.id, index)}
                     style={{
-                      backgroundColor: parsedItem.color,
-                      filter: 'blur(5px)' // Apply blur effect
+                      borderRight: parsedItem.color ? `7px solid ${parsedItem.color}` : 'none', // Conditionally set border-right style
                     }}
-                  ></span>
-                </button>
+                    className='rounded-[7px] bg-white p-3 w-full flex items-center justify-between'
+                    key={parsedItem.id}
+                  >
+                    <div>
+                      <p className='text-left w-fit font-semibold text-[18px]'>{parsedItem.name}</p>
+                      <p className='text-left font-semibold'>{formatTimestamp(createdAt)}</p> {/* Pass createdAt as Date object */}
+                    </div>
+                  </button>
+                </div>
+
               );
             })}
 

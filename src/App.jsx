@@ -10,6 +10,7 @@ import AiBook from "./components/dashboard/AiBook";
 import PracticePaper from "./components/dashboard/PracticePaper";
 import Analayzer from "./components/Analayzer";
 import AiUsage from "./components/AiUsage";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
       <Route path='/user/log-in' element={<Login />} />
       <Route path='/user/sign-in' element={<SignIn />} />
       <Route element={<Root_layout />} >
-        <Route index path="/dashboard" element={<Home_dashboard/>}/>
+        <Route  path="/dashboard" element={<Home_dashboard/>}/>
+        <Route index path="/home" element={<Home/>}/>
         <Route path="/ai-book" element={<AiBook/>}/>
         <Route path="/practice-paper" element={<PracticePaper/>}/>
         <Route path="/profile/:id" element={<PracticePaper/>}/>

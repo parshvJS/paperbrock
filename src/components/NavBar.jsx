@@ -18,13 +18,13 @@ export const NavBar = () => {
         <div className="navbar flex justify-between md:justify-evenly items-center p-3 pt-7 mb-[40px] md:mb-0">
             <div>
 
-                <Link to="/"> 
-                {/* <img src={logo} alt="" /> */}
-                <p className="text-white font-semibold text-[24px]">PaperBrock.</p>
+                <Link to="/">
+                    {/* <img src={logo} alt="" /> */}
+                    <p className="text-white font-semibold text-[24px]">PaperBrock.</p>
                 </Link>
-                
+
             </div>
-          
+
             <div className="md:w-[40%] hidden w-full  md:block ">
                 <ul className="flex justify-center h-6">
                     {
@@ -41,7 +41,7 @@ export const NavBar = () => {
 
             </div>
             <div>
-                <Link to="/beta-register" className="bg-white px-2.5 py-2 md:px-5 md:py-2 rounded-full hover:bg-blue-600 transition-all hover:text-white  text-black md:font-semibold font-normal ">Start For Free</Link>
+                <Link to="/user/log-in" className="bg-white px-2.5 py-2 md:px-5 md:py-2 rounded-full hover:bg-blue-600 transition-all hover:text-white  text-black md:font-semibold font-normal ">Start For Free</Link>
             </div>
 
         </div>

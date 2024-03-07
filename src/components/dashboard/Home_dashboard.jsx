@@ -5,7 +5,7 @@ import del from '../../assets/delete.svg';
 import './general.css';
 import { useUserContext } from '../../context/authChecked';
 import DropDown from './DropDown';
-import { api_url, course, options } from '../../constants';
+import {  course, options } from '../../constants';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { getPyqData } from '../../utils/apiCall';
@@ -41,10 +41,10 @@ const Home_dashboard = () => {
         formData.append("pyq", file);
       });
 
-      const resp =await getPyqData(formData)
-
+      const resp = await getPyqData(formData)
+     
       console.log(resp);
-      if (resp.success == false ) {
+      if (resp.success == false) {
         const notify = () => toast.error(resp.error.message, {
           position: "top-center",
           autoClose: 5000,
@@ -54,10 +54,11 @@ const Home_dashboard = () => {
           draggable: true,
           progress: undefined,
           theme: "light",
-      });
+        });
         notify()
         throw new Error("Failed to upload files");
       }
+
       navigate(`/analayzer/${resp.data.id}`)
       // navigate('/analayzer/65df6f68e4ce716fe4a8876e')
 
@@ -67,7 +68,7 @@ const Home_dashboard = () => {
       setIsLoading(false)
     }
   }
-           
+
 
 
 
@@ -86,7 +87,7 @@ const Home_dashboard = () => {
   }
 
   return (
-    <div className='m-3 w-full'>
+    <div className='m-4 w-full'>
       <div>
         <p className='text-black text-[24px] font-bold'><span className='text-pri-500'>Upload</span> Exam Papers</p>
       </div>
