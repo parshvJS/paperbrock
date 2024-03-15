@@ -25,10 +25,12 @@ module.exports = {
           300: '#598bff',
           400: '#3366ff',
           500: '#0033ff', // Pure blue
+          550: '#0F0BC7',
           600: '#001f99',
           700: '#001466',
           800: '#000e4d',
           900: '#000933', // Dark blue
+          
         },
         fontFamily: {
           'sans': ['Roboto Mono', 'sans-serif'],

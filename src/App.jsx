@@ -11,7 +11,6 @@ import PracticePaper from "./components/dashboard/PracticePaper";
 import Analayzer from "./components/Analayzer";
 import AiUsage from "./components/AiUsage";
 import Home from "./components/Home";
-
 function App() {
   return (
 

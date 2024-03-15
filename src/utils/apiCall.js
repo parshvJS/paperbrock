@@ -10,9 +10,13 @@ export const getPyqData = async (formData) => {
   const headers = {
     "Authorization": `Bearer ${accessToken}`,
   };
-
+const headingAuth = {
+  headers: {
+    "Authorization": `Bearer ${localStorage.getItem("AccessToken")}`
+  }
+}
   // Make fetch request with headers
-  const response = await fetch(`http://localhost:8000/api/v1/pyq/pyq`, {
+  const response = await fetch(`https://paperbrockbackend.onrender.com/api/v1/pyq/pyq`, {
     method: "POST",
     headers: headers,
     body: formData,
@@ -34,7 +38,7 @@ export const getPyqData = async (formData) => {
 // get data from paramns 
 
 export const getParamsData = async (id) => {
-  await fetch(`http://localhost:8000/api/v1/pyq/getParamsData`, {
+  await fetch(`https://paperbrockbackend.onrender.com/api/v1/pyq/getParamsData`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
@@ -47,16 +51,36 @@ export const getParamsData = async (id) => {
 }
 
 export const getUsageArray = async () => {
-  const arr = await fetch("http://localhost:8000/api/v1/pyq/getUsage", {
-    headers: {
-      "Authorization": `Bearer ${localStorage.getItem("AccessToken")}`
-    }
-  });
+  const arr = await fetch("https://paperbrockbackend.onrender.com/api/v1/pyq/getUsage", { headers: {
+    "Authorization": `Bearer ${localStorage.getItem("AccessToken")}`
+  },});
   const array = await arr.json();
   if(array.message == "log-in"){
     return array
   }
-  // console.log("returning : " ,array.data.usage)
+  console.log("returning : " ,array.data.usage)
   return array.data.usage;
 }
 
+export const getAiAnswers = async (questionArray) =>{
+  try {
+
+    const response = await fetch("https://paperbrockbackend.onrender.com/api/v1/ai/aibook",{
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        "Authorization": `Bearer ${localStorage.getItem("AccessToken")}`
+      },
+      body:JSON.stringify(
+        {"questions":questionArray}
+      )
+    });
+    const allAns = await response.json();
+    return allAns;
+    
+  } catch (error) {
+    console.log(error.message)
+    throw new Error(error)
+    
+  }
+}
