@@ -16,7 +16,7 @@ function AiUsage() {
   const [imp, setImp] = useState([]);
   const [allAns, setAllAns] = useState([]);
   const { collapsedCon } = useUserContext();
-  const [isLoading,setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [expandedItem, setExpanedItem] = useState([]);
   useEffect(() => {
     function getLocalData() {
@@ -144,35 +144,35 @@ function AiUsage() {
           <p className='m-4 text-black text-[20px] font-semibold'><span className='text-pri-600'>Answer</span> Book</p>
         </div>
         {
-       isLoading ? <LoadingPrompt/> :  allAns.length == 0 ? 
-       <div className='flex justify-center items-center flex-col m-20 rounded-md '><img  src={skeletonImage} alt="" /> 
-       <p className='font-semibold text-[20px]'>Selected Answers Will Be Shown Here</p>
-        </div>
-     :                
- allAns ?
-   Object.keys(allAns).map((qa, index) => {
-     return (
-     <div className='m-2'>
-         {
-            <button onClick={() => handleExpandButton(index)} className='transition-all rounded-[5px] bg-white w-full border-[3px] border-black p-2 '>
-               <div className='flex justify-between items-center transition-all'>
-                 <p className='text-left font-semibold'>{qa}</p>
-                 <img src={expandedItem.includes(index) ? expandArrRev : expandArr} alt="open" />
-               </div>
+          isLoading ? <LoadingPrompt /> : allAns.length == 0 ?
+            <div className='flex justify-center items-center flex-col m-20 rounded-md '><img src={skeletonImage} alt="" />
+              <p className='font-semibold text-[20px]'>Selected Answers Will Be Shown Here</p>
+            </div>
+            :
+            allAns ?
+              Object.keys(allAns).map((qa, index) => {
+                return (
+                  <div className='m-2'>
+                    {
+                      <button onClick={() => handleExpandButton(index)} className='transition-all rounded-[5px] bg-white w-full border-[3px] border-black p-2 '>
+                        <div className='flex justify-between items-center transition-all'>
+                          <p className='text-left font-semibold'>{qa}</p>
+                          <img src={expandedItem.includes(index) ? expandArrRev : expandArr} alt="open" />
+                        </div>
 
-               <div className={`${expandedItem.includes(index) ? "" : "hidden"} mt-5 transition-all p-2 `}>
-                 {
-                   expandedItem.includes(index) ? <div className='text-left font-normal'>{allAns[qa]}</div> : (<div ></div>)
-                 }
-               </div>
-             </button>
+                        <div className={`${expandedItem.includes(index) ? "" : "hidden"} mt-5 transition-all p-2 `}>
+                          {
+                            expandedItem.includes(index) ? <div className='text-left font-normal'>{allAns[qa]}</div> : (<div ></div>)
+                          }
+                        </div>
+                      </button>
 
-         }
+                    }
 
 
-       </div>
-     )
-   }) : <p></p>
+                  </div>
+                )
+              }) : <p></p>
         }
       </div>
     </div>

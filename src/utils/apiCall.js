@@ -16,7 +16,7 @@ const headingAuth = {
   }
 }
   // Make fetch request with headers
-  const response = await fetch(`https://paperbrockbackend.onrender.com/api/v1/pyq/pyq`, {
+  const response = await fetch(`http://localhost:8000/api/v1/pyq/pyq`, {
     method: "POST",
     headers: headers,
     body: formData,
@@ -38,7 +38,7 @@ const headingAuth = {
 // get data from paramns 
 
 export const getParamsData = async (id) => {
-  await fetch(`https://paperbrockbackend.onrender.com/api/v1/pyq/getParamsData`, {
+  await fetch(`http://localhost:8000/api/v1/pyq/getParamsData`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ export const getParamsData = async (id) => {
 }
 
 export const getUsageArray = async () => {
-  const arr = await fetch("https://paperbrockbackend.onrender.com/api/v1/pyq/getUsage", { headers: {
+  const arr = await fetch("http://localhost:8000/api/v1/pyq/getUsage", { headers: {
     "Authorization": `Bearer ${localStorage.getItem("AccessToken")}`
   },});
   const array = await arr.json();
@@ -65,7 +65,7 @@ export const getUsageArray = async () => {
 export const getAiAnswers = async (questionArray) =>{
   try {
 
-    const response = await fetch("https://paperbrockbackend.onrender.com/api/v1/ai/aibook",{
+    const response = await fetch("http://localhost:8000/api/v1/ai/aibook",{
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
@@ -83,4 +83,27 @@ export const getAiAnswers = async (questionArray) =>{
     throw new Error(error)
     
   }
+}
+
+export const getPracticePaperUsage = async ()=>{
+  const response  = await fetch("http://localhost:8000/api/v1/practice/getPracticeUsage",{
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem("AccessToken")}`
+    }
+  });
+  const array = await response.json();
+  return array
+}
+
+export const getPacticePaperDetails = async ()=>{
+  const response  = await fetch("http://localhost:8000/api/v1/practice/getPracticeDetails",{
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem("AccessToken")}`
+    }
+  });
+  const array = await response.json();
+  console.log(array.data,"is here");
+  return array
 }

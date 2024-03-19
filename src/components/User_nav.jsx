@@ -47,7 +47,7 @@ const UserNav = () => {
         try {
             const accessToken = localStorage.getItem("AccessToken");
             const headers = { "Authorization": `Bearer ${accessToken}` };
-            const res = await fetch(`https://paperbrockbackend.onrender.com/api/v1/users/logout`, { headers, method: 'POST' });
+            const res = await fetch(`http://localhost:8000/api/v1/users/logout`, { headers, method: 'POST' });
             const response = await res.json();
             localStorage.removeItem('AccessToken');
             if (response.success) {

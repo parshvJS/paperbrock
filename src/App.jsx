@@ -11,6 +11,8 @@ import PracticePaper from "./components/dashboard/PracticePaper";
 import Analayzer from "./components/Analayzer";
 import AiUsage from "./components/AiUsage";
 import Home from "./components/Home";
+import Practice from "./components/dashboard/Practice";
+import PracticeUsage from "./components/dashboard/PracticeUsage";
 function App() {
   return (
 
@@ -25,7 +27,8 @@ function App() {
         <Route  path="/dashboard" element={<Home_dashboard/>}/>
         <Route index path="/home" element={<Home/>}/>
         <Route path="/ai-book" element={<AiBook/>}/>
-        <Route path="/practice-paper" element={<PracticePaper/>}/>
+        <Route path="/practice-paper" element={<Practice/>}/>
+        <Route path="/practice/:id" element={<PracticeUsage/>}/>
         <Route path="/profile/:id" element={<PracticePaper/>}/>
         <Route path="/analayzer/:id" element={<Analayzer/>}/>
         <Route path="/aiBook/:id" element={<AiUsage/>}/>

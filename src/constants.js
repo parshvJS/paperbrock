@@ -1,4 +1,4 @@
-export const api_url = "https://paperbrockbackend.onrender.com"
+export const api_url = "http://localhost:8000"
 export const headers = 
 {
   "Content-Type" : "application/json"
@@ -94,3 +94,11 @@ export const formatTimestamp = (timestamp) => {
     return `${seconds} second${seconds > 1 ? 's' : ''} ago`;
   }
 };
+
+// button group constants
+
+export const practiceDiff = {
+  Easy:"easy",
+  Medium:"medium",
+  Hard:"hard"
+}
